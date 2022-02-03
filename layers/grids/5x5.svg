@@ -175,11 +175,11 @@
       <feComposite operator="in" in2="blur-25"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <clipPath id="clip-Grid">
+    <clipPath id="clip-_5x5">
       <rect width="256" height="256"/>
     </clipPath>
   </defs>
-  <g id="Grid" clip-path="url(#clip-Grid)">
+  <g id="_5x5" data-name="5x5" clip-path="url(#clip-_5x5)">
     <g id="Group_3" data-name="Group 3">
       <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_2)">
         <circle id="Ellipse_2-2" data-name="Ellipse 2" cx="17" cy="17" r="17" transform="translate(111 111)" fill="#696969"/>

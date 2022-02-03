@@ -31,3 +31,7 @@ export function randomRarity(): Rarity {
 
     return Rarity.Common;
 }
+
+export function replaceColor(str: string, color: string): string {
+    return str.replace(/#696969/g, color);
+}

@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <filter id="Ellipse_2" x="102" y="105" width="52" height="52" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#fff" flood-opacity="0.341"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Ellipse_11" x="102" y="147" width="52" height="52" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-color="#fff" flood-opacity="0.341"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Ellipse_15" x="102" y="63" width="52" height="52" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-3"/>
+      <feFlood flood-color="#fff" flood-opacity="0.341"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Ellipse_5" x="60" y="105" width="52" height="52" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-4"/>
+      <feFlood flood-color="#fff" flood-opacity="0.341"/>
+      <feComposite operator="in" in2="blur-4"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Ellipse_23" x="60" y="147" width="52" height="52" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-5"/>
+      <feFlood flood-color="#fff" flood-opacity="0.341"/>
+      <feComposite operator="in" in2="blur-5"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Ellipse_19" x="60" y="63" width="52" height="52" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-6"/>
+      <feFlood flood-color="#fff" flood-opacity="0.341"/>
+      <feComposite operator="in" in2="blur-6"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Ellipse_29" x="144" y="63" width="52" height="52" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-7"/>
+      <feFlood flood-color="#fff" flood-opacity="0.341"/>
+      <feComposite operator="in" in2="blur-7"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Ellipse_30" x="144" y="147" width="52" height="52" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-8"/>
+      <feFlood flood-color="#fff" flood-opacity="0.341"/>
+      <feComposite operator="in" in2="blur-8"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Ellipse_3" x="144" y="105" width="52" height="52" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-9"/>
+      <feFlood flood-color="#fff" flood-opacity="0.341"/>
+      <feComposite operator="in" in2="blur-9"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-_3x3">
+      <rect width="256" height="256"/>
+    </clipPath>
+  </defs>
+  <g id="_3x3" data-name="3x3" clip-path="url(#clip-_3x3)">
+    <g id="Group_3" data-name="Group 3">
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_2)">
+        <circle id="Ellipse_2-2" data-name="Ellipse 2" cx="17" cy="17" r="17" transform="translate(111 111)" fill="#696969"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_11)">
+        <circle id="Ellipse_11-2" data-name="Ellipse 11" cx="17" cy="17" r="17" transform="translate(111 153)" fill="#696969"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_15)">
+        <circle id="Ellipse_15-2" data-name="Ellipse 15" cx="17" cy="17" r="17" transform="translate(111 69)" fill="#696969"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_5)">
+        <circle id="Ellipse_5-2" data-name="Ellipse 5" cx="17" cy="17" r="17" transform="translate(69 111)" fill="#696969"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_23)">
+        <circle id="Ellipse_23-2" data-name="Ellipse 23" cx="17" cy="17" r="17" transform="translate(69 153)" fill="#696969"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_19)">
+        <circle id="Ellipse_19-2" data-name="Ellipse 19" cx="17" cy="17" r="17" transform="translate(69 69)" fill="#696969"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_29)">
+        <circle id="Ellipse_29-2" data-name="Ellipse 29" cx="17" cy="17" r="17" transform="translate(153 69)" fill="#696969"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_30)">
+        <circle id="Ellipse_30-2" data-name="Ellipse 30" cx="17" cy="17" r="17" transform="translate(153 153)" fill="#696969"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_3)">
+        <circle id="Ellipse_3-2" data-name="Ellipse 3" cx="17" cy="17" r="17" transform="translate(153 111)" fill="#696969"/>
+      </g>
+    </g>
+  </g>
+</svg>

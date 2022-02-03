@@ -1,7 +1,6 @@
-import fs from 'fs/promises';
 import fse from 'fs-extra'
-import { randomRarity } from './utils';
-import { getRandomColorOfRarity } from './layers/colors';
+import { getRandomColor } from './layers/colors';
+import { getRandomGrid } from './layers/grids';
 
 const template = `
     <svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -10,16 +9,20 @@ const template = `
     </svg>
 `
 
-async function generate() {
-    let grid = (await fs.readFile('layers/grids/5x5.svg')).toString();
-    grid = grid.replace(/#696969/g, '#FF0000');
-    const final = template.replace('<!-- grid -->', grid.toString());
-    await fse.outputFile('out/test.svg', final);
+async function generate(ind: number) {
+    const color = getRandomColor();
+    const grid = await getRandomGrid(color.value);
+    console.log(grid.name);
+    const final = template.replace('<!-- grid -->', grid.value);
+    await fse.outputFile(`out/test-${ind}.svg`, final);
 }
 
 async function bootstrap() {
-    const color = getRandomColorOfRarity(randomRarity());
-    console.log(color.name);
+    await Promise.all(
+        new Array(10)
+            .fill(0)
+            .map(async (_, i) => await generate(i))
+    );
 }
 
 bootstrap().catch(e => console.error(e));

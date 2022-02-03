@@ -1,7 +1,7 @@
 import { randomInt } from "crypto";
-import { Layer, LayerConfig, Rarity } from "../../utils";
+import { Layer, LayerConfig, randomRarity, Rarity } from "../../utils";
 
-export const colors: LayerConfig = {
+const colors: LayerConfig = {
     [Rarity.Common]: [
         { value: '#1D4E89', name: 'Yale Blue' },
         { value: '#DA3E52', name: 'Amaranth' },
@@ -18,7 +18,9 @@ export const colors: LayerConfig = {
     ]
 }
 
-export const getRandomColorOfRarity = (rarity: Rarity): Layer => {
+export const getRandomColor = (): Layer => {
+    let rarity = randomRarity();
+
     // if the random rarity does not exist in config,
     // get Uncommon instead, since that would be next best
     if(!colors[rarity]) {
