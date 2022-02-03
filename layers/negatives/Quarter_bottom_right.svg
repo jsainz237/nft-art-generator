@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <clipPath id="clip-Quarter_bottom_right">
+      <rect width="256" height="256"/>
+    </clipPath>
+  </defs>
+  <g id="Quarter_bottom_right" clip-path="url(#clip-Quarter_bottom_right)">
+    <rect id="Rectangle_4" data-name="Rectangle 4" width="128" height="128" transform="translate(128 128)" fill="#696969" style="mix-blend-mode: difference;isolation: isolate"/>
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <clipPath id="clip-_3_quarters_right">
+      <rect width="256" height="256"/>
+    </clipPath>
+  </defs>
+  <g id="_3_quarters_right" data-name="3_quarters_right" clip-path="url(#clip-_3_quarters_right)">
+    <path id="Union_2" data-name="Union 2" d="M-4668-1130l128-128,128,128Zm0-256h256l-128,128-128,128Z" transform="translate(4668 1386)" fill="#696969" style="mix-blend-mode: difference;isolation: isolate"/>
+  </g>
+</svg>
