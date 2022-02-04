@@ -26,15 +26,15 @@
     </clipPath>
   </defs>
   <g id="_3_vertical" data-name="3_vertical" clip-path="url(#clip-_3_vertical)">
-    <g id="Group_3" data-name="Group 3" transform="translate(256 0) rotate(90)">
-      <g transform="matrix(0, -1, 1, 0, 0, 256)" filter="url(#Ellipse_2)">
-        <circle id="Ellipse_2-2" data-name="Ellipse 2" cx="17" cy="17" r="17" transform="translate(145 111) rotate(90)" fill="#696969"/>
+    <g id="Group_7" data-name="Group 7">
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_2)">
+        <circle id="Ellipse_2-2" data-name="Ellipse 2" cx="17" cy="17" r="17" transform="translate(111 111)" fill="#696969"/>
       </g>
-      <g transform="matrix(0, -1, 1, 0, 0, 256)" filter="url(#Ellipse_5)">
-        <circle id="Ellipse_5-2" data-name="Ellipse 5" cx="17" cy="17" r="17" transform="translate(145 69) rotate(90)" fill="#696969"/>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_5)">
+        <circle id="Ellipse_5-2" data-name="Ellipse 5" cx="17" cy="17" r="17" transform="translate(111 69)" fill="#696969"/>
       </g>
-      <g transform="matrix(0, -1, 1, 0, 0, 256)" filter="url(#Ellipse_3)">
-        <circle id="Ellipse_3-2" data-name="Ellipse 3" cx="17" cy="17" r="17" transform="translate(145 153) rotate(90)" fill="#696969"/>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_3)">
+        <circle id="Ellipse_3-2" data-name="Ellipse 3" cx="17" cy="17" r="17" transform="translate(111 153)" fill="#696969"/>
       </g>
     </g>
   </g>
