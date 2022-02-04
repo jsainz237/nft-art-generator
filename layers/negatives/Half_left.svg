@@ -4,7 +4,7 @@
       <rect width="256" height="256"/>
     </clipPath>
   </defs>
-  <g id="Half_left" clip-path="url(#clip-Half_left)">
-    <rect id="Rectangle_4" data-name="Rectangle 4" width="128" height="256" fill="#696969" style="mix-blend-mode: difference;isolation: isolate"/>
+  <g style="mix-blend-mode: difference;isolation: isolate" id="Half_left" clip-path="url(#clip-Half_left)">
+    <rect id="Rectangle_4" data-name="Rectangle 4" width="128" height="256" fill="#696969"/>
   </g>
 </svg>

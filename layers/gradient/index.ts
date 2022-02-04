@@ -16,10 +16,12 @@ const getGradientTemplate = (
     color1: string,
     color2: string
 ) => `
-    <linearGradient id="linear-gradient" x1="${x1}" x2="${x2}" y1="${y1}" y2="${y2}" gradientUnits="objectBoundingBox">
-        <stop offset="0" stop-color="${color1}"/>
-        <stop offset="1" stop-color="${color2}"/>
-    </linearGradient>
+    <defs>
+        <linearGradient id="linear-gradient" x1="${x1}" x2="${x2}" y1="${y1}" y2="${y2}" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="${color1}"/>
+            <stop offset="1" stop-color="${color2}"/>
+        </linearGradient>
+    </defs>
 `
 
 function getRandomDirection() {

@@ -4,7 +4,7 @@
       <rect width="256" height="256"/>
     </clipPath>
   </defs>
-  <g id="Quarter_rotated_top" clip-path="url(#clip-Quarter_rotated_top)">
-    <path id="Polygon_1" data-name="Polygon 1" d="M128,0,256,128H0Z" transform="translate(256 128) rotate(180)" fill="#696969" style="mix-blend-mode: difference;isolation: isolate"/>
+  <g style="mix-blend-mode: difference;isolation: isolate" id="Quarter_rotated_top" clip-path="url(#clip-Quarter_rotated_top)">
+    <path id="Polygon_1" data-name="Polygon 1" d="M128,0,256,128H0Z" transform="translate(256 128) rotate(180)" fill="#696969"/>
   </g>
 </svg>

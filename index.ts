@@ -2,16 +2,16 @@ import fse from 'fs-extra'
 import { generateGradient } from './layers/gradient';
 import { getRandomColor } from './layers/colors';
 import { getRandomGrid } from './layers/grids';
-import { Layer, randomRarity, Rarity, replaceColor } from './utils';
+import { getRandomNegative } from './layers/negatives';
+import { addLayerToSvg, Layer, randomRarity, Rarity, replaceColor } from './utils';
 
 const template = `
     <svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
-            <!-- gradient -->
+            <!-- insert defs above -->
         </defs>
         <rect width="256" height="256" fill="#000"/>
-        <!-- grid -->
-        <!-- negative -->
+        <!-- insert content above -->
     </svg>
 `
 
@@ -28,23 +28,24 @@ async function generate(ind: number) {
     color = getRandomColor();
 
     // get random grid layer
-    grid = await getRandomGrid(color.value);
-    // svg = svg.replace('<!-- grid -->', grid.value);
+    grid = await getRandomGrid();
+    
+    // get random negative layer
+    negative = await getRandomNegative();
 
     // if chance is at least Rare, add gradient to grid and negative
     if(randomRarity() <= Rarity.Rare) {
         secondaryColor = getRandomColor();
         gradient = await generateGradient(color.value, secondaryColor.value);
-        svg = svg.replace('<!-- gradient -->', gradient.value);
-
-        // make grid fill into gradient fill
-        grid.value = replaceColor(grid.value, 'url(#linear-gradient');
+        svg = addLayerToSvg(svg, gradient);
     }
 
-    // replace fill colors in grid to be either gradient or primary color
-    grid.value = replaceColor(grid.value, gradient ? 'url(#linear-gradient' : color.value);
+    // replace fill colors to be either gradient or primary color
+    grid.value = replaceColor(grid.value, gradient ? 'url(#linear-gradient)' : color.value);
+    negative.value = replaceColor(negative.value, gradient ? 'url(#linear-gradient)' : color.value);
 
-    svg = svg.replace('<!-- grid -->', grid.value);
+    svg = addLayerToSvg(svg, grid);
+    svg = addLayerToSvg(svg, negative);
     
     await fse.outputFile(`out/test-${ind}.svg`, svg);
 }

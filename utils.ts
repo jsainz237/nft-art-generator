@@ -37,3 +37,17 @@ export function randomRarity(): Rarity {
 export function replaceColor(str: string, colorOrId: string): string {
     return str.replace(/(fill=".+?")/g, `fill="${colorOrId}"`);
 }
+
+export function addLayerToSvg(svg: string, layer: Layer): string {
+    const defRegex = RegExp(/<defs>\n((.|\n)*)<\/defs>/m);
+    const contentRegex = RegExp(/<\/defs>\n((.|\n)*)<\/svg>/m);
+
+    // console.log(layer.value);
+    const defs = layer.value.match(defRegex)?.[1] ?? '';
+    const content = layer.value.match(contentRegex)?.[1] ?? '';
+
+
+    return svg
+        .replace(/<!-- insert defs above -->/g, `${defs}<!-- insert defs above -->`)
+        .replace(/<!-- insert content above -->/g, `${content}<!-- insert content above -->`)
+}
