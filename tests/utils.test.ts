@@ -1,4 +1,4 @@
-import { Rarity, randomRarity } from "../utils";
+import { Rarity, randomRarity, randomInt } from "../utils";
 
 describe('Utility Functions', () => {
     test('Correct dispersement of random rarities', () => {
@@ -27,5 +27,27 @@ describe('Utility Functions', () => {
             Rarity.Epic,
             Rarity.Legendary,
         ]);
+    });
+
+    describe('randomInt', () => {
+        test('randomInt never goes above max', () => {
+            for(let i = 0; i <= 1000; i++) {
+                const max = 3;
+                const random = randomInt(max);
+                expect(random).not.toBeGreaterThan(max);
+                expect(random).not.toBeLessThan(0);
+            }
+        });
+
+        test('randomInt never goes out of array scope', () => {
+            const testArr = [0, 1, 2, 3];
+            for(let i = 0; i <= 1000; i++) {
+                const max = testArr.length - 1;
+                const random = randomInt(max);
+                expect(random).not.toBeGreaterThan(max);
+                expect(random).not.toBeLessThan(0);
+                expect(testArr[random]).toBeDefined();
+            }
+        })
     })
 })

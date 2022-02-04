@@ -18,8 +18,8 @@ const colors: LayerConfig = {
     ]
 }
 
-export const getRandomColor = (): Layer => {
-    let rarity = randomRarity();
+export const getRandomColor = (rarityLevel?: Rarity): Layer<string> => {
+    let rarity = rarityLevel ?? randomRarity();
 
     // if the random rarity does not exist in config,
     // get Uncommon instead, since that would be next best
@@ -28,5 +28,7 @@ export const getRandomColor = (): Layer => {
     }
 
     const max = colors[rarity]!.length;
-    return colors[rarity]![randomInt(max)];
+    const color = colors[rarity]![randomInt(max)];
+
+    return { ...color as Layer, rarity };
 }

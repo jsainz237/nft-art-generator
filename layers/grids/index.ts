@@ -1,10 +1,10 @@
 import fs from 'fs/promises';
-import { Layer, LayerConfig, randomRarity, Rarity, replaceColor, randomInt } from '../../utils';
+import { LayerConfig, randomRarity, Rarity, randomInt, Layer } from '../../utils';
 
 const grids = async (color: string): Promise<LayerConfig> => {
     const getGridLayer = async (gridName: string) => {
         const grid = await fs.readFile(`layers/grids/${gridName}.svg`);
-        return replaceColor(grid.toString(), color);
+        return grid.toString();
     }
 
     return {
@@ -46,9 +46,8 @@ const grids = async (color: string): Promise<LayerConfig> => {
 
 export const getRandomGrid = async (color: string): Promise<Layer> => {
     const rarity = randomRarity();
-    const max = (await grids(color))[rarity]!.length;
-
+    const max = (await grids(color))[rarity]!.length - 1;
     const grid = (await grids(color))[rarity]![randomInt(max)];
 
-    return grid;
+    return { ...grid as Layer, rarity };
 }

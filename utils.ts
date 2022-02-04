@@ -1,18 +1,20 @@
-export interface Layer {
-    value: any;
+export interface Layer<T=string> {
+    value: T;
     name: string;
+    rarity: Rarity;
+    [key: string]: any;
 }
 
 export enum Rarity {
     // name -- percentage
     Common = 100,
-    Uncommon = 30,
-    Rare = 10,
-    Epic = 5,
-    Legendary = 2,
+    Uncommon = 40,
+    Rare = 20,
+    Epic = 8,
+    Legendary = 3,
 }
 
-export type LayerConfig = Partial<Record<Rarity, Layer[]>>;
+export type LayerConfig = Partial<Record<Rarity, Omit<Layer, 'rarity'>[]>>;
 
 export function randomInt(max: number = 100) {
     return Math.floor(Math.random() * (max + 1));
@@ -32,6 +34,6 @@ export function randomRarity(): Rarity {
     return Rarity.Common;
 }
 
-export function replaceColor(str: string, color: string): string {
-    return str.replace(/#696969/g, color);
+export function replaceColor(str: string, colorOrId: string): string {
+    return str.replace(/(fill=".+?")/g, `fill="${colorOrId}"`);
 }
