@@ -5,6 +5,10 @@ import { getRandomGrid } from './layers/grids';
 import { getRandomNegative } from './layers/negatives';
 import { addLayerToSvg, Layer, randomRarity, Rarity, replaceColor } from './utils';
 
+const NUM_TO_GENERATE = process.argv[2]
+    ? parseInt(process.argv[2]) 
+    : 10;
+
 const template = `
     <svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -35,13 +39,16 @@ async function generate(ind: number) {
 
     // if chance is at least Rare, add gradient to grid and negative
     if(randomRarity() <= Rarity.Rare) {
-        secondaryColor = getRandomColor();
+        do {
+            secondaryColor = getRandomColor()
+        } while(secondaryColor.value === color.value);
+
         gradient = await generateGradient(color.value, secondaryColor.value);
         svg = addLayerToSvg(svg, gradient);
     }
 
     // replace fill colors to be either gradient or primary color
-    grid.value = replaceColor(grid.value, gradient ? 'url(#linear-gradient)' : color.value);
+    grid.value = replaceColor(grid.value, gradient ? 'url(#linear-gradient-opposite)' : color.value);
     negative.value = replaceColor(negative.value, gradient ? 'url(#linear-gradient)' : color.value);
 
     svg = addLayerToSvg(svg, grid);
@@ -52,7 +59,7 @@ async function generate(ind: number) {
 
 async function bootstrap() {
     await Promise.all(
-        new Array(10)
+        new Array(NUM_TO_GENERATE)
             .fill(0)
             .map(async (_, i) => await generate(i))
     );
