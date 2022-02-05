@@ -147,13 +147,6 @@
       <feComposite operator="in" in2="blur-21"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <filter id="Ellipse_35" x="102" y="105" width="52" height="52" filterUnits="userSpaceOnUse">
-      <feOffset dy="3" input="SourceAlpha"/>
-      <feGaussianBlur stdDeviation="3" result="blur-22"/>
-      <feFlood flood-color="#fff" flood-opacity="0.341"/>
-      <feComposite operator="in" in2="blur-22"/>
-      <feComposite in="SourceGraphic"/>
-    </filter>
     <clipPath id="clip-missing_corners_rotated">
       <rect width="256" height="256"/>
     </clipPath>
@@ -222,9 +215,6 @@
       </g>
       <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_4)">
         <circle id="Ellipse_4-2" data-name="Ellipse 4" cx="17" cy="17" r="17" transform="translate(170.4 170.4)" fill="#696969"/>
-      </g>
-      <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Ellipse_35)">
-        <circle id="Ellipse_35-2" data-name="Ellipse 35" cx="17" cy="17" r="17" transform="translate(111 111)" fill="#696969"/>
       </g>
     </g>
     <text id="Uncommon_" data-name="Uncommon
