@@ -3,7 +3,7 @@ import { generateGradient } from './layers/gradient';
 import { getRandomColor } from './layers/colors';
 import { getRandomGrid } from './layers/grids';
 import { getRandomNegative } from './layers/negatives';
-import { addLayerToSvg, Layer, randomRarity, Rarity, replaceColor } from './utils';
+import { addLayerToSvg, getMetadata, Layer, randomRarity, Rarity, replaceColor } from './utils';
 
 const NUM_TO_GENERATE = process.argv[2]
     ? parseInt(process.argv[2]) 
@@ -18,6 +18,8 @@ const template = `
         <!-- insert content above -->
     </svg>
 `
+
+const alreadyGenerated: Record<string, boolean> = {};
 
 async function generate(ind: number) {
     let color: Layer;
@@ -53,8 +55,29 @@ async function generate(ind: number) {
 
     svg = addLayerToSvg(svg, grid);
     svg = addLayerToSvg(svg, negative);
+
+    const datacode = secondaryColor 
+        ? `${color.id}-${grid.id}-${negative.id}-${secondaryColor.id}`
+        : `${color.id}-${grid.id}-${negative.id}`;
+
+    const metadata = {
+        id: ind,
+        color: getMetadata(color),
+        grid: getMetadata(grid),
+        negative: getMetadata(negative),
+        gradient: gradient && getMetadata(gradient), 
+        gradientColor: secondaryColor && getMetadata(secondaryColor),
+        datacode,
+    }
+
+    // if generation is not unique, regenerate
+    if(alreadyGenerated[datacode]) {
+        console.log('already generated: ', datacode);
+        generate(ind);
+    }
     
     await fse.outputFile(`out/test-${ind}.svg`, svg);
+    await fse.outputFile(`out/test-${ind}.json`, JSON.stringify(metadata, null, 2));
 }
 
 async function bootstrap() {

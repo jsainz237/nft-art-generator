@@ -1,8 +1,18 @@
 export interface Layer<T=string> {
+    id: string | number;
     value: T;
     name: string;
     rarity: Rarity;
-    [key: string]: any;
+}
+
+export function getMetadata(layer: Layer) {
+    return ({
+        name: layer.name,
+        rarity: {
+            name: Rarity[layer.rarity],
+            '%': layer.rarity,
+        },
+    });
 }
 
 export enum Rarity {

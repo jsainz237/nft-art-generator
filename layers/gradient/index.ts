@@ -47,5 +47,5 @@ export const generateGradient = async (color1: string, color2: string): Promise<
 
     const gradientName = `gradient-${direction.name}`;
 
-    return { name: gradientName, value: gradient, rarity: Rarity.Epic };
+    return { id: 1, name: gradientName, value: gradient, rarity: Rarity.Epic };
 }

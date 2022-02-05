@@ -3,18 +3,18 @@ import { Layer, LayerConfig, randomRarity, Rarity } from "../../utils";
 
 const colors: LayerConfig = {
     [Rarity.Common]: [
-        { value: '#1D4E89', name: 'Yale Blue' },
-        { value: '#DA3E52', name: 'Amaranth' },
-        { value: '#EDDEA4', name: 'Medium Champagne' },
-        { value: '#FFFFFF', name: 'White' },
+        { id: 'yb', value: '#1D4E89', name: 'Yale Blue' },
+        { id: 'am', value: '#DA3E52', name: 'Amaranth' },
+        { id: 'mc', value: '#EDDEA4', name: 'Medium Champagne' },
+        { id: 'wh', value: '#FFFFFF', name: 'White' },
     ],
     [Rarity.Uncommon]: [
-        { value: '#F6BDD1', name: 'Orchid Pink' },
-        { value: '#40CBC0', name: 'Medium Turquoise' },
-        { value: '#3F84E5', name: 'Azure' },
-        { value: '#9097C0', name: 'Blue Bell' },
-        { value: '#BFACC8', name: 'Thistle' },
-        { value: '#247BA0', name: 'Celadon Blue' },
+        { id: 'op', value: '#F6BDD1', name: 'Orchid Pink' },
+        { id: 'mt', value: '#40CBC0', name: 'Medium Turquoise' },
+        { id: 'az', value: '#3F84E5', name: 'Azure' },
+        { id: 'bb', value: '#9097C0', name: 'Blue Bell' },
+        { id: 'th', value: '#BFACC8', name: 'Thistle' },
+        { id: 'cb', value: '#247BA0', name: 'Celadon Blue' },
     ]
 }
 
