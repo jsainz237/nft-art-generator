@@ -1,9 +1,13 @@
 import fse from 'fs-extra'
+import sharp from 'sharp';
+import pLimit from 'p-limit';
 import { generateGradient } from './layers/gradient';
 import { getRandomColor } from './layers/colors';
 import { getRandomGrid } from './layers/grids';
 import { getRandomNegative } from './layers/negatives';
 import { addLayerToSvg, getMetadata, Layer, randomRarity, Rarity, replaceColor } from './utils';
+
+const limit = pLimit(10);
 
 const NUM_TO_GENERATE = process.argv[2]
     ? parseInt(process.argv[2]) 
@@ -22,6 +26,7 @@ const template = `
 const alreadyGenerated: Record<string, boolean> = {};
 
 async function generate(ind: number) {
+    const id = ind + 1;
     let color: Layer;
     let secondaryColor: Layer | undefined = undefined;
     let grid: Layer;
@@ -83,7 +88,7 @@ async function generate(ind: number) {
     `.replace(/[ \n]/g, '');
 
     const metadata = {
-        id: ind,
+        id,
         color: getMetadata(color),
         grid: getMetadata(grid),
         negative: getMetadata(negative),
@@ -104,19 +109,21 @@ async function generate(ind: number) {
             alreadyGenerated[same_datacode_with_opposite_colors]
         )
     ) {
-        generate(ind);
+        generate(id);
     }
     
-    await fse.outputFile(`out/test-${ind}.svg`, svg);
-    await fse.outputFile(`out/test-${ind}.json`, JSON.stringify(metadata, null, 2));
+    await fse.outputFile(`out/${id}.svg`, svg);
+    await fse.outputFile(`out/${id}.json`, JSON.stringify(metadata, null, 2));
+    await sharp(`./out/${id}.svg`).resize(1024).toFile(`./out/${id}.png`);
 }
 
 async function bootstrap() {
-    await Promise.all(
-        new Array(NUM_TO_GENERATE)
-            .fill(0)
-            .map(async (_, i) => await generate(i))
-    );
+    const promises = new Array(NUM_TO_GENERATE).fill(0)
+        .map((_, i) => limit(generate, i));
+
+    await Promise.all(promises);
 }
 
-bootstrap().catch(e => console.error(e));
+bootstrap()
+    .then(() => console.log('done'))
+    .catch(e => console.error(e));
