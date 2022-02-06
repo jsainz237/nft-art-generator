@@ -25,6 +25,7 @@ async function generate(ind: number) {
     let color: Layer;
     let secondaryColor: Layer | undefined = undefined;
     let grid: Layer;
+    let isBorders: boolean = false;
     let negative: Layer;
     let gradient: Layer | undefined = undefined;
 
@@ -49,16 +50,37 @@ async function generate(ind: number) {
         svg = addLayerToSvg(svg, gradient);
     }
 
+    // determine if grid should be borders
+    if(randomRarity() <= Rarity.Legendary) {
+        isBorders = true;
+    }
+
     // replace fill colors to be either gradient or primary color
-    grid.value = replaceColor(grid.value, gradient ? 'url(#linear-gradient-opposite)' : color.value);
+    grid.value = replaceColor(
+        grid.value,
+        gradient ? 'url(#linear-gradient-opposite)' : color.value,
+        isBorders
+    );
     negative.value = replaceColor(negative.value, gradient ? 'url(#linear-gradient)' : color.value);
 
     svg = addLayerToSvg(svg, grid);
     svg = addLayerToSvg(svg, negative);
 
-    const datacode = secondaryColor 
-        ? `${color.id}-${grid.id}-${negative.id}-${secondaryColor.id}`
-        : `${color.id}-${grid.id}-${negative.id}`;
+    const datacode = `
+        ${color.id}-
+        ${grid.id}
+        ${isBorders ? '-b' : ''}-
+        ${negative.id}
+        ${secondaryColor ? `-${secondaryColor.id}` : ''}
+    `.replace(/[ \n]/g, '');
+
+    const same_datacode_with_opposite_colors = secondaryColor && `
+        ${secondaryColor.id}-
+        ${grid.id}
+        ${isBorders ? '-b' : ''}-
+        ${negative.id}
+        ${color.id}
+    `.replace(/[ \n]/g, '');
 
     const metadata = {
         id: ind,
@@ -67,12 +89,21 @@ async function generate(ind: number) {
         negative: getMetadata(negative),
         gradient: gradient && getMetadata(gradient), 
         gradientColor: secondaryColor && getMetadata(secondaryColor),
+        borders: !isBorders ? undefined : {
+            name: 'borders',
+            rarity: { name: Rarity[Rarity.Legendary], '%': Rarity.Legendary }
+        },
         datacode,
     }
 
     // if generation is not unique, regenerate
-    if(alreadyGenerated[datacode]) {
-        console.log('already generated: ', datacode);
+    if(
+        alreadyGenerated[datacode] || 
+        (
+            same_datacode_with_opposite_colors && 
+            alreadyGenerated[same_datacode_with_opposite_colors]
+        )
+    ) {
         generate(ind);
     }
     

@@ -44,10 +44,13 @@ export function randomRarity(): Rarity {
     return Rarity.Common;
 }
 
-export function replaceColor(str: string, colorOrId: string): string {
-    return str.replace(/(fill=".+?")/g, `fill="${colorOrId}"`);
-}
+export function replaceColor(str: string, colorOrId: string, toBorder?: boolean): string {
+    const replacement = toBorder
+        ? `fill="none" stroke="${colorOrId}" stroke-width="2"`
+        : `fill="${colorOrId}"`;
 
+    return str.replace(/(fill=".+?")/g, replacement);
+}
 export function addLayerToSvg(svg: string, layer: Layer): string {
     const defRegex = RegExp(/<defs>\n((.|\n)*)<\/defs>/m);
     const contentRegex = RegExp(/<\/defs>\n((.|\n)*)<\/svg>/m);
