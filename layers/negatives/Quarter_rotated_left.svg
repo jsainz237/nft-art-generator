@@ -5,6 +5,6 @@
     </clipPath>
   </defs>
   <g style="mix-blend-mode: difference;isolation: isolate" id="Quarter_rotated_left" clip-path="url(#clip-Quarter_rotated_left)">
-    <path id="Polygon_1" data-name="Polygon 1" d="M128,0,256,128H0Z" transform="translate(128) rotate(90)" fill="#696969"/>
+    <path id="Path_2" data-name="Path 2" d="M5945,665.2l128-128-128-128Z" transform="translate(-5945 -409.204)" fill="#696969"/>
   </g>
 </svg>

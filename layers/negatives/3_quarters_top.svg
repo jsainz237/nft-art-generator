@@ -5,6 +5,6 @@
     </clipPath>
   </defs>
   <g style="mix-blend-mode: difference;isolation: isolate" id="_3_quarters_top" data-name="3_quarters_top" clip-path="url(#clip-_3_quarters_top)">
-    <path id="Union_2" data-name="Union 2" d="M0,0,128,128,256,0ZM0,256H256L128,128,0,0Z" transform="translate(0 256) rotate(-90)" fill="#696969"/>
+    <path id="Subtraction_4" data-name="Subtraction 4" d="M-5014-1130h-256v-256l128,128,128-128v256Z" transform="translate(5270 1386)" fill="#696969"/>
   </g>
 </svg>
