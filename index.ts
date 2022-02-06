@@ -1,6 +1,7 @@
 import fse from 'fs-extra'
 import sharp from 'sharp';
 import pLimit from 'p-limit';
+import ProgressBar from 'progress';
 import { generateGradient } from './layers/gradient';
 import { getRandomColor } from './layers/colors';
 import { getRandomGrid } from './layers/grids';
@@ -12,6 +13,11 @@ const limit = pLimit(10);
 const NUM_TO_GENERATE = process.argv[2]
     ? parseInt(process.argv[2]) 
     : 10;
+
+const progressBar = new ProgressBar('generating :current/:total [:bar] :percent :rate/bps :etas', {
+    width: 50,
+    total: NUM_TO_GENERATE,
+});
 
 const template = `
     <svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -115,6 +121,7 @@ async function generate(ind: number) {
     await fse.outputFile(`out/${id}.svg`, svg);
     await fse.outputFile(`out/${id}.json`, JSON.stringify(metadata, null, 2));
     await sharp(`./out/${id}.svg`).resize(1024).toFile(`./out/${id}.png`);
+    progressBar.tick();
 }
 
 async function bootstrap() {
