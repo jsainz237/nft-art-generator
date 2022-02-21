@@ -1,4 +1,8 @@
-import { Rarity, randomRarity, randomInt } from "../utils";
+import { generateGradient } from "../layers/gradient";
+import { getRandomGrid } from "../layers/grids";
+import { getRandomNegative } from "../layers/negatives";
+import { getRandomColor } from "../layers/colors";
+import { Rarity, randomRarity, randomInt, getMetadata } from "../utils";
 
 describe('Utility Functions', () => {
     test('Correct dispersement of random rarities', () => {
@@ -50,4 +54,34 @@ describe('Utility Functions', () => {
             }
         })
     })
+
+    test.only('metadata generation', async () => {
+        const color = getRandomColor();
+        const color2 = getRandomColor();
+        const grid = await getRandomGrid();
+        const negative = await getRandomNegative();
+        const gradient = await generateGradient(color.value, color2.value);
+
+        expect(getMetadata({ color })).toEqual({
+            trait_type: 'color',
+            value: color.name,
+        });
+
+        expect(getMetadata({ grid })).toEqual({
+            trait_type: 'grid',
+            value: grid.name,
+        });
+
+        expect(getMetadata({ negative })).toEqual({
+            trait_type: 'negative',
+            value: negative.name,
+        });
+
+        expect(getMetadata({ gradient })).toEqual({
+            trait_type: 'gradient',
+            value: gradient.name,
+        });
+
+        expect(getMetadata({ layername: undefined })).toBe(null);
+    });
 })

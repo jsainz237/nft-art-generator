@@ -94,17 +94,19 @@ async function generate(ind: number) {
     `.replace(/[ \n]/g, '');
 
     const metadata = {
-        id,
-        color: getMetadata(color),
-        grid: getMetadata(grid),
-        negative: getMetadata(negative),
-        gradient: gradient && getMetadata(gradient), 
-        gradientColor: secondaryColor && getMetadata(secondaryColor),
-        borders: !isBorders ? undefined : {
-            name: 'borders',
-            rarity: { name: Rarity[Rarity.Legendary], '%': Rarity.Legendary }
-        },
+        name: `dot-${id}`,
+        description: "idk it's just dots",
         datacode,
+        attributes: [
+            getMetadata({ color }),
+            getMetadata({ grid }),
+            getMetadata({ negative }),
+            getMetadata({ gradient }),
+            getMetadata({ 'gradient color': secondaryColor }),
+            (!isBorders ? null : {
+                value: 'borders',
+            })
+        ].filter(val => !!val),
     }
 
     // if generation is not unique, regenerate

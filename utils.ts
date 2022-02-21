@@ -5,14 +5,12 @@ export interface Layer<T=string> {
     rarity: Rarity;
 }
 
-export function getMetadata(layer: Layer) {
-    return ({
-        name: layer.name,
-        rarity: {
-            name: Rarity[layer.rarity],
-            '%': layer.rarity,
-        },
-    });
+export function getMetadata(trait: { [key: string]: Layer | undefined }) {
+    const [trait_type, layer] = Object.entries(trait)[0];
+    
+    if(!layer) return null;
+
+    return { trait_type, value: layer.name };
 }
 
 export enum Rarity {
