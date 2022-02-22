@@ -94,6 +94,7 @@ async function generate(ind: number) {
     `.replace(/[ \n]/g, '');
 
     const metadata = {
+        id,
         name: `dot-${id}`,
         description: "idk it's just dots",
         datacode,
@@ -120,9 +121,17 @@ async function generate(ind: number) {
         generate(id);
     }
     
-    await fse.outputFile(`out/${id}.svg`, svg);
-    await fse.outputFile(`out/${id}.json`, JSON.stringify(metadata, null, 2));
-    await sharp(`./out/${id}.svg`).resize(1024).toFile(`./out/${id}.png`);
+    await fse.outputFile(`out/svgs/${id}.svg`, svg);
+    await fse.outputFile(`out/metadata/${id}.json`, JSON.stringify(metadata, null, 2));
+    
+    const dir = './out/pngs';
+    if (!fse.existsSync(dir)) {
+        fse.mkdirSync(dir, {
+            recursive: true
+        });
+    }
+    await sharp(`./out/svgs/${id}.svg`).resize(1024).toFile(`./out/pngs/${id}.png`);
+    
     progressBar.tick();
 }
 
